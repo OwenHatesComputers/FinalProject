@@ -6,6 +6,18 @@ TagManager:
   tags:
   - Flower
   - Bee
+  - wall
+  - hive
+  - flower
+  - Enemy
+  - dog
+  - bird
+  - bee
+  - wall2
+  - honey
+  - sewers
+  - fense
+  - hand
   layers:
   - Default
   - TransparentFX
