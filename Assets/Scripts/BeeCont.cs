@@ -9,7 +9,6 @@ public class BeeCont : MonoBehaviour
     //public GameObject = wall;
     public float movementSpeed = 10f;
     public float gravityConstant;
-    public int health = 3;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,9 +30,27 @@ public class BeeCont : MonoBehaviour
         if (other.tag == "hive")
         {
             Debug.Log("Quit!");
+            GameObject.Find("PlayerInfo").GetComponent<PlayerInfo>().SendMessage("EndOFLevelHoney");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
-       
+
+        if (other.tag == "honey")
+        {
+            GameObject.Find("PlayerInfo").GetComponent<PlayerInfo>().SendMessage("GainHoney");
+            other.gameObject.SetActive(false);
+
+        }
+
+        if (other.gameObject.tag == "bird")
+        {
+            GameObject.Find("HealthManager").GetComponent<HealthManager>().SendMessage("LoseHeart");
+        }
+        if (other.gameObject.tag == "hand")
+        {
+            GameObject.Find("HealthManager").GetComponent<HealthManager>().SendMessage("LoseHeart");
+        }
+
+
 
     }
 
@@ -45,6 +62,13 @@ public class BeeCont : MonoBehaviour
         }
         if (other.gameObject.tag == "Enemy") {
             GameObject.Find("HealthManager").GetComponent<HealthManager>().SendMessage("LoseHeart");
+        }
+
+        
+
+        if (other.gameObject.tag == "dog")
+        {
+            GameObject.Find("HealthManager").GetComponent<HealthManager>().SendMessage("GameOver");
         }
     }
 

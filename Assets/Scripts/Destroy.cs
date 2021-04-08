@@ -9,5 +9,19 @@ public class Destroy : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (col.gameObject.tag == "bird")
+        {
+            Destroy(gameObject);
+        }
+        if (col.gameObject.tag == "bee")
+        {
+            Destroy(gameObject);
+        }
+        if (col.gameObject.tag == "dog")
+        {
+            Destroy(gameObject);
+        }
+
     }
 }

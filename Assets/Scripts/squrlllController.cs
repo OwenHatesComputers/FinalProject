@@ -13,14 +13,22 @@ public class squrlllController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        time = Time.time;
+        time = Time.time + Time.unscaledDeltaTime * 5;
         //Debug.Log(time);
-        if ( time % 1f <= .005)
+        if ( time % 1f <= .002)
         {
             Debug.Log("Acorn Launched");
             GameObject acorn1 = Instantiate(acorn);
             acorn1.transform.position = squrlll.transform.position;
             acorn1.GetComponent<Rigidbody2D>().AddForce(acornSpeed*20f);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "dog")
+        {
+            Destroy(gameObject);
         }
     }
 }
